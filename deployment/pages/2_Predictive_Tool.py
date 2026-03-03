@@ -46,43 +46,51 @@ art = fit_beta_model()
 ranges = art["feature_ranges"]
 
 # ── sidebar sliders ──────────────────────────────────────────────────
-st.sidebar.header("School Characteristics")
-
+st.sidebar.header(" Main CCR Drivers")
+st.sidebar.caption(
+    "These three factors have the strongest influence on College & Career Readiness."
+)
 eni = st.sidebar.slider(
     "Economic Need Index",
     min_value=0.0, max_value=1.0,
-    value=round(ranges["economic_need_index"]["median"], 2),
+    value=0.60,
     step=0.01,
-    help="0 = lowest need, 1 = highest need",
+    help="0 = lowest need, 1 = highest need. Strongly linked to CCR.",
+)
+attendance = st.sidebar.slider(
+    "Avg Student Attendance",
+    min_value=round(ranges["avg_student_attendance"]["min"], 2),
+    max_value=1.0,
+    value=0.70,
+    step=0.01,
+    help="Higher attendance strongly predicts higher CCR.",
 )
 pct_temp = st.sidebar.slider(
     "% Temporary Housing",
     min_value=0.0, max_value=round(ranges["percent_temp_housing"]["max"], 2),
     value=round(ranges["percent_temp_housing"]["median"], 2),
     step=0.01,
+    help="Housing instability is a key barrier to CCR outcomes.",
 )
-teaching = st.sidebar.slider(
-    "Teaching Environment (% Positive)",
-    min_value=round(ranges["teaching_environment_pct_positive"]["min"], 2),
-    max_value=1.0,
-    value=round(ranges["teaching_environment_pct_positive"]["median"], 2),
-    step=0.01,
-)
-attendance = st.sidebar.slider(
-    "Avg Student Attendance",
-    min_value=round(ranges["avg_student_attendance"]["min"], 2),
-    max_value=1.0,
-    value=round(ranges["avg_student_attendance"]["median"], 2),
-    step=0.01,
-)
-support = st.sidebar.slider(
-    "Student Support (% Positive)",
-    min_value=round(ranges["student_support_pct"]["min"], 2),
-    max_value=1.0,
-    value=round(ranges["student_support_pct"]["median"], 2),
-    step=0.01,
-)
-borough = st.sidebar.selectbox("Borough", BOROUGHS, index=0)
+
+st.sidebar.markdown("---")
+with st.sidebar.expander("Additional Controls", expanded=False):
+    st.caption("Fine-tune other school characteristics for a more precise prediction.")
+    teaching = st.slider(
+        "Teaching Environment (% Positive)",
+        min_value=round(ranges["teaching_environment_pct_positive"]["min"], 2),
+        max_value=1.0,
+        value=round(ranges["teaching_environment_pct_positive"]["median"], 2),
+        step=0.01,
+    )
+    support = st.slider(
+        "Student Support (% Positive)",
+        min_value=round(ranges["student_support_pct"]["min"], 2),
+        max_value=1.0,
+        value=round(ranges["student_support_pct"]["median"], 2),
+        step=0.01,
+    )
+    borough = st.selectbox("Borough", BOROUGHS, index=0)
 
 # ── prediction ───────────────────────────────────────────────────────
 pred_ccr, contribs = predict_ccr(art, eni, pct_temp, teaching, attendance, support, borough)

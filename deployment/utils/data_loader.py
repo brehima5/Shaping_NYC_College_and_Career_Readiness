@@ -40,10 +40,10 @@ FEATURE_DISPLAY = {
 }
 
 SUBGROUP_COLORS = {
-    "Asian": "#2196F3",
-    "Black": "#FF9800",
-    "Hispanic": "#4CAF50",
-    "White": "#9C27B0",
+    "Asian": "#000000",
+    "Black": "#D9D5BA",
+    "Hispanic": "#716931",
+    "White": "#1CD74B",
 }
 
 BOROUGHS = ["Bronx", "Brooklyn", "Manhattan", "Queens", "Staten Island"]
@@ -121,7 +121,7 @@ def fit_beta_model():
     model_df = pd.concat([model_df, borough_dummies], axis=1)
 
     n_total = len(model_df)
-    model_df["ccr_prop"] = model_df["metric_value_4yr_ccr_all_students"] / 100.0
+    model_df["ccr_prop"] = model_df["metric_value_4yr_ccr_all_students"] / 100
     # Smithson-Verkuilen squeeze
     model_df["ccr_prop"] = (model_df["ccr_prop"] * (n_total - 1) + 0.5) / n_total
 
@@ -243,7 +243,7 @@ def build_subgroup_data():
     dim_env, dim_loc, dim_dem, fact, _ = load_raw_tables()
 
     sg = fact.copy()
-    sg["ccr_pct"] = sg["ccr_rate"] * 10000
+    sg["ccr_pct"] = sg["ccr_rate"] * 100
 
     sg = sg.merge(
         dim_dem[["DBN", "Subgroup", "student_percent", "nearby_student_percent",
