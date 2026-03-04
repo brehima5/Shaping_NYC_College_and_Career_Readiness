@@ -1,4 +1,4 @@
-# Data Slayer Corps: Closing NYC’s College Readiness Gap
+# Shaping NYC College & Career Readiness
 
 ## Model Deployment
 
