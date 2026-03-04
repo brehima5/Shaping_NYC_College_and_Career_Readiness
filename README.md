@@ -12,6 +12,12 @@ Our full model, with included dashboard and project metrics, is uploaded on Stre
 
 </div>
 
+## Contributor and Roles 
+
+* **Project Manager:** [Thierno Barry](https://www.linkedin.com/in/thierno-barry-analyst/)
+* **Data Manager, Engineer, Modeling** [Rolando Mancilla-Rojas](https://www.linkedin.com/in/romaro/)
+* **Data Analysis, Exploration, Dashboard** [Adebola Odutola](https://www.linkedin.com/in/deboodutola/)
+
 ## Critical Research Question (CRQ)
 > **To what extent do a high school’s Economic Need Index (ENI) and Percent of Students in Temporary Housing predicts its College and Career Readiness (CCR), how do these environmental stressors impact specific demographic subgroups within the same schools,and which schools serve as "positive outliers" by defying these systemic predictors?**
 
@@ -33,7 +39,6 @@ Our full model, with included dashboard and project metrics, is uploaded on Stre
 - [Key Findings](#key-findings)
 - [Links to Final Deliverables](#links-to-final-deliverables)
 - [Data Source Attribution](#data-source-attribution)
-- [Contributor and Roles](#contributor-and-roles)
 - [Tree Structure](#tree-structure)
 
 
@@ -204,12 +209,6 @@ Because the model uses a logit link, contributions are additive on the log-odds 
 ## Data Source Attribution 
 
 We acknowledge and appreciate the work of the New York City Department of Education (NYC DOE) in making this data publicly available through the InfoHub School Quality Reports: Citywide Results portal. The data are published for public use to support transparency and community engagement in understanding school performance and quality in New York City.
-
-## Contributor and Roles 
-
-* (Thierno Barry: Role X)[Link to LinkedIn]
-* (Rolando Mancilla-Rojas: Role Y)[Link to LinkedIn]
-* (Adebola Odutola: Role Z)[Link to LinkedIn]
 
 ## Tree Structure
 ```python
